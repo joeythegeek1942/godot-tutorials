@@ -9,6 +9,7 @@ export(int) var noise_octaves = 3
 export(int) var noise_period = 3
 export(float) var noise_persistence = 0.7
 export(float) var noise_lacunarity = 0.4
+export(float) var noise_threshold = 0.5
 
 var tile_map : TileMap
 var simplex_noise : OpenSimplexNoise = OpenSimplexNoise.new()

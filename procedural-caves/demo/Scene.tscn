@@ -18,8 +18,8 @@ cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 format = 1
 
 [node name="CaveGenerator" parent="TileMap" instance=ExtResource( 3 )]
-world_seed = "whatsup"
 redraw = true
+world_seed = "whatsup"
 noise_period = 25
 noise_persistence = 5.0
 noise_lacunarity = 2.0
