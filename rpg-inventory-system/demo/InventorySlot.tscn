@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://InventorySlot.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/select_dots.png" type="Texture" id=2]
+
+[node name="InventorySlot" type="Control"]
+margin_left = -7.85938
+margin_top = -7.90625
+margin_right = 8.14063
+margin_bottom = 8.09375
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 8, 8 )
+texture = ExtResource( 2 )
