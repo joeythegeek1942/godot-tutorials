@@ -13,6 +13,7 @@ enum {
 
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
+onready var inventory = $Inventory
 
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
