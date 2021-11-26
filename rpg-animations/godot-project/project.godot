@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://player/Player.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "PlayerV2",
-"language": "GDScript",
-"path": "res://player/PlayerV2.gd"
-}, {
 "base": "StaticBody2D",
 "class": "RockTarget",
 "language": "GDScript",
@@ -31,7 +26,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Player": "",
-"PlayerV2": "",
 "RockTarget": "",
 "TreeTarget": ""
 }
