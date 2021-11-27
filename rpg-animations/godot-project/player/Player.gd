@@ -48,7 +48,6 @@ func run_state(delta):
 	velocity = move_and_slide(velocity)
 	
 	if velocity.length() > 0 && Input.is_action_just_pressed("roll"):
-		$MovementTimer.start()
 		state = ROLL
 		roll_finished = false
 	elif velocity.length() == 0 && Input.is_action_just_pressed("jump"):
