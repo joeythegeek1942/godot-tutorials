@@ -53,7 +53,6 @@ func run_state(delta):
 		roll_finished = false
 	elif velocity.length() == 0 && Input.is_action_just_pressed("jump"):
 		state = JUMP
-		$MovementTimer.start()
 	elif velocity.length() == 0 && Input.is_action_pressed("action"):
 		if is_tree_infront():
 			state = WOODCUTTING
@@ -109,6 +108,3 @@ func _on_Hitbox_body_entered(body):
 
 func _on_Hitbox_body_exited(body):
 	targets.erase(body)
-
-func _on_MovementTimer_timeout():
-	animation_finished()
