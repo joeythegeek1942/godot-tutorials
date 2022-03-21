@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dungeon.png-2922ce75f85d393595428b44bf1167e9.stex"
+path="res://.import/SUNNYSIDE_WORLD_BUILDINGS_V0.01.png-e27930f8fee22908e9db436abb885c14.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dungeon.png"
-dest_files=[ "res://.import/dungeon.png-2922ce75f85d393595428b44bf1167e9.stex" ]
+source_file="res://assets/SUNNYSIDE_WORLD_BUILDINGS_V0.01.png"
+dest_files=[ "res://.import/SUNNYSIDE_WORLD_BUILDINGS_V0.01.png-e27930f8fee22908e9db436abb885c14.stex" ]
 
 [params]
 
