@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Lumbermill",
 "language": "GDScript",
 "path": "res://world_objects/lumbermill/Lumbermill.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Villager",
+"language": "GDScript",
+"path": "res://world_objects/villager/Villager.gd"
 } ]
 _global_script_class_icons={
 "DayNightCycle": "",
-"Lumbermill": ""
+"Lumbermill": "",
+"Villager": ""
 }
 
 [application]
