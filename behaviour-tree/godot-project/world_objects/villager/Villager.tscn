@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://world_objects/villager/Villager.gd" type="Script" id=1]
 [ext_resource path="res://assets/sunnyside_world_chatacter_anim_GOBLIN.png" type="Texture" id=2]
@@ -29,7 +29,7 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( -1, 1 ) ]
 }
 
@@ -59,7 +59,7 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 1, 1 ) ]
 }
 
@@ -90,6 +90,9 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "Run_Right"
+
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Idle_Left"
 
@@ -114,7 +117,7 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 
 [sub_resource type="AnimationNodeBlendTree" id=5]
-graph_offset = Vector2( -265.815, 30.0225 )
+graph_offset = Vector2( -535, -83.375 )
 nodes/Idle/node = SubResource( 11 )
 nodes/Idle/position = Vector2( -110, 150 )
 node_connections = [ "output", 0, "Idle" ]
@@ -139,11 +142,11 @@ frame = 46
 anims/Idle_Left = SubResource( 4 )
 anims/Idle_Right = SubResource( 2 )
 anims/RESET = SubResource( 3 )
+anims/Run_Right = SubResource( 13 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 5 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/Idle/blend_position = Vector2( -0.974132, -0.00243306 )
 parameters/Idle/3/playback = SubResource( 12 )
 
