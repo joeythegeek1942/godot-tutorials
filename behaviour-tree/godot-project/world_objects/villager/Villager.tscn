@@ -93,6 +93,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 230, 231, 232, 233, 234, 235, 236, 237, 238, 239 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.525 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_action_performed"
+} ]
+}
 
 [sub_resource type="Animation" id=37]
 resource_name = "Chopping_Right"
@@ -122,6 +136,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 230, 231, 232, 233, 234, 235, 236, 237, 238, 239 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.525 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_action_performed"
+} ]
 }
 
 [sub_resource type="Animation" id=51]
@@ -153,6 +181,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.525 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_action_performed"
+} ]
+}
 
 [sub_resource type="Animation" id=50]
 resource_name = "Digging_Right"
@@ -182,6 +224,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.525 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_action_performed"
+} ]
 }
 
 [sub_resource type="Animation" id=44]
@@ -213,6 +269,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 138, 139, 140, 141, 142, 143, 144, 145 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.525 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_action_performed"
+} ]
+}
 
 [sub_resource type="Animation" id=43]
 resource_name = "Doing_Right"
@@ -242,6 +312,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 138, 139, 140, 141, 142, 143, 144, 145 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.525 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_action_performed"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -420,6 +504,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 69, 70, 71, 72, 73 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.375 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_action_performed"
+} ]
+}
 
 [sub_resource type="Animation" id=31]
 resource_name = "Watering_Right"
@@ -449,6 +547,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 69, 70, 71, 72, 73 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.375 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_action_performed"
+} ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=27]
