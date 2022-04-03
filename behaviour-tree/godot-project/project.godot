@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "AnimationTree",
+"class": "BlendPositionAnimationTree",
+"language": "GDScript",
+"path": "res://util/BlendPositionAnimationTree.gd"
+}, {
 "base": "CanvasModulate",
 "class": "DayNightCycle",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://world_objects/villager/Villager.gd"
 } ]
 _global_script_class_icons={
+"BlendPositionAnimationTree": "",
 "DayNightCycle": "",
 "Lumbermill": "",
 "Villager": ""
