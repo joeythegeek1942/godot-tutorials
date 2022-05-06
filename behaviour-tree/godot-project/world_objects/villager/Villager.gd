@@ -1,4 +1,3 @@
-tool
 class_name Villager
 extends KinematicBody2D
 
@@ -17,8 +16,10 @@ enum AnimationState {
 export(float) var ACCELERATION = 340
 export(float) var FRICTION = 670
 export(float) var MAX_SPEED = 75
+export(Vector2) var target_location setget _set_target_location
 
 onready var animation_tree:BlendPositionAnimationTree = $AnimationTree
+onready var navigation_agent = $NavigationAgent2D
 
 var velocity = Vector2.ZERO
 var state = AnimationState.IDLE
@@ -27,6 +28,8 @@ var last_move_velocity = Vector2.ZERO
 
 func _ready():
 	animation_tree.active = true
+	target_location = global_position
+	navigation_agent.set_target_location(target_location)
 	
 func water():
 	state = AnimationState.WATERING
@@ -62,6 +65,10 @@ func move_state(delta, idle_animation, run_animation, max_speed, acceleration):
 	velocity = move_and_slide(velocity)
 	
 func _physics_process(delta):
+	var next_location = navigation_agent.get_next_location()
+	var direction = (next_location - global_transform.origin).normalized()
+	move(direction)
+	
 	match state:
 		AnimationState.RUN:
 			move_state(delta, AnimationState.IDLE, AnimationState.RUN, MAX_SPEED, ACCELERATION)
@@ -74,3 +81,11 @@ func look_at_direction(direction:Vector2) -> void:
 	
 func _action_performed() -> void:
 	emit_signal("action_performed")
+	
+func _set_target_location(tl):
+	target_location = tl
+	if navigation_agent != null:
+		navigation_agent.set_target_location(target_location)
+		
+func _process(delta):
+	self.target_location = get_global_mouse_position()
