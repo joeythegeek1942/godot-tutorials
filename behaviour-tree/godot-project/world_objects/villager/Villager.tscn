@@ -832,3 +832,5 @@ shape = SubResource( 1 )
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 0.1
 neighbor_dist = 10.0
+max_neighbors = 20
+path_max_distance = 20.0

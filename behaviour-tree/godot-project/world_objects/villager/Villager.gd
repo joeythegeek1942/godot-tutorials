@@ -86,6 +86,3 @@ func _set_target_location(tl):
 	target_location = tl
 	if navigation_agent != null:
 		navigation_agent.set_target_location(target_location)
-		
-func _process(delta):
-	self.target_location = get_global_mouse_position()
