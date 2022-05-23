@@ -19,6 +19,7 @@ var roll_vector = Vector2.DOWN
 var state = RUN
 var roll_finished = false
 var targets = []
+var direction = Vector2.ZERO
 	
 func _physics_process(delta):
 	match state:
@@ -74,7 +75,7 @@ func mining_state(delta):
 func woodcutting_state(delta):
 	velocity = move_and_slide(velocity)
 
-func animation_finished():
+func animation_finished():	
 	if !Input.is_action_pressed("action"):
 		state = RUN
 		velocity = Vector2.ZERO

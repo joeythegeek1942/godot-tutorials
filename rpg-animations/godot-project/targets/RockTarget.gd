@@ -6,8 +6,6 @@ onready var SPRITES = [$SpriteFull, $SpriteHalf, $SpriteAlmostGone]
 
 export(int) var health = 5
 
-onready var sprite = $Sprite
-
 func hit() -> void:
 	if health > 0:
 		health = health - 1

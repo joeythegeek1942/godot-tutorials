@@ -5,7 +5,6 @@ onready var SPRITES = [$SpriteFull, $SpriteHalf, $SpriteAlmost, $SpriteChopped]
 
 export(int) var health = 5
 
-onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
 
 func hit() -> void:

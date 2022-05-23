@@ -17,7 +17,7 @@ enum {
 onready var animation_player = $AnimationPlayer
 
 var velocity = Vector2.ZERO
-var roll_vector = Vector2.DOWN
+var direction_vector = Vector2.DOWN
 var state = RUN
 var roll_finished = false
 var targets = []
@@ -43,7 +43,7 @@ func run_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		roll_vector = input_vector
+		direction_vector = input_vector
 		_play_animation("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -69,7 +69,7 @@ func run_state(delta):
 	
 func roll_state(delta):
 	if !roll_finished:
-		velocity = roll_vector * ROLL_SPEED
+		velocity = direction_vector * ROLL_SPEED
 	else:
 		velocity = velocity * 0.9
 	velocity = move_and_slide(velocity)
@@ -118,14 +118,14 @@ func _on_Hitbox_body_exited(body):
 	targets.erase(body)
 
 func _play_animation(animation_type:String) -> void:
-	var animation = animation_type + "_" + _get_direction_string()
-	if animation != animation_player.current_animation:
+	var animation_name = animation_type + "_" + _get_direction_string(direction_vector.angle())
+	if animation_name != animation_player.current_animation:
 		animation_player.stop(true)
-	animation_player.play(animation)
+	animation_player.play(animation_name)
 			
-func _get_direction_string() -> String:
-	var angle_deg = round(rad2deg(roll_vector.angle()))
-	if angle_deg > -90.0 and angle_deg <= 90.0:
+func _get_direction_string(angle:float) -> String:
+	var angle_deg = round(rad2deg(angle))
+	if angle_deg > -90.0 and angle_deg < 90.0:
 		return "Right"
 	return "Left"
 
