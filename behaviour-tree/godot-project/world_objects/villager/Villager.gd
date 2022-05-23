@@ -17,9 +17,11 @@ export(float) var ACCELERATION = 340
 export(float) var FRICTION = 670
 export(float) var MAX_SPEED = 75
 export(Vector2) var target_location setget _set_target_location
+export(NodePath) var house_path
 
 onready var animation_tree:BlendPositionAnimationTree = $AnimationTree
 onready var navigation_agent = $NavigationAgent2D
+onready var house:House = get_node(house_path)
 
 var velocity = Vector2.ZERO
 var state = AnimationState.IDLE

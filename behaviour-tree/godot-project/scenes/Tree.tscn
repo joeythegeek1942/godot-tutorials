@@ -39,7 +39,7 @@ region = Rect2( 64, 336, 32, 48 )
 radius = 5.0
 height = 6.0
 
-[node name="Tree" type="StaticBody2D"]
+[node name="Tree" type="StaticBody2D" groups=["Trees"]]
 script = ExtResource( 1 )
 state = 1
 

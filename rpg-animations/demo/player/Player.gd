@@ -14,17 +14,14 @@ enum {
 	WOODCUTTING
 }
 
-onready var animation_tree = $AnimationTree
-onready var animation_state = animation_tree.get("parameters/playback")
+onready var animation_player = $AnimationPlayer
 
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var state = RUN
 var roll_finished = false
 var targets = []
-
-func _ready():
-	animation_tree.active = true
+var direction = Vector2.ZERO
 	
 func _physics_process(delta):
 	match state:
@@ -47,29 +44,27 @@ func run_state(delta):
 	
 	if input_vector != Vector2.ZERO:
 		roll_vector = input_vector
-		animation_tree.set("parameters/Idle/blend_position", input_vector)
-		animation_tree.set("parameters/Run/blend_position", input_vector)
-		animation_tree.set("parameters/Jump/blend_position", input_vector)
-		animation_tree.set("parameters/Roll/blend_position", input_vector)
-		animation_tree.set("parameters/Woodcutting/blend_position", input_vector)
-		animation_tree.set("parameters/Mining/blend_position", input_vector)
-		animation_state.travel("Run")
+		_play_animation("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
-		animation_state.travel("Idle")
+		_play_animation("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 	velocity = move_and_slide(velocity)
 	
 	if velocity.length() > 0 && Input.is_action_just_pressed("roll"):
+		_play_animation("Roll")
 		state = ROLL
 		roll_finished = false
 	elif velocity.length() == 0 && Input.is_action_just_pressed("jump"):
+		_play_animation("Jump")
 		state = JUMP
 	elif velocity.length() == 0 && Input.is_action_pressed("action"):
 		if is_tree_infront():
+			_play_animation("Woodcutting")
 			state = WOODCUTTING
 		elif is_rock_infront():
+			_play_animation("Mining")
 			state = MINING
 	
 func roll_state(delta):
@@ -77,22 +72,18 @@ func roll_state(delta):
 		velocity = roll_vector * ROLL_SPEED
 	else:
 		velocity = velocity * 0.9
-	animation_state.travel("Roll")
 	velocity = move_and_slide(velocity)
 	
 func jump_state(delta):
-	animation_state.travel("Jump")
 	velocity = move_and_slide(velocity)
 	
 func mining_state(delta):
-	animation_state.travel("Mining")
 	velocity = move_and_slide(velocity)
 	
 func woodcutting_state(delta):
-	animation_state.travel("Woodcutting")
 	velocity = move_and_slide(velocity)
 
-func animation_finished():
+func animation_finished():	
 	if !Input.is_action_pressed("action"):
 		state = RUN
 		velocity = Vector2.ZERO
@@ -125,3 +116,16 @@ func _on_Hitbox_body_entered(body):
 
 func _on_Hitbox_body_exited(body):
 	targets.erase(body)
+
+func _play_animation(animation_type:String) -> void:
+	var animation = animation_type + "_" + _get_direction_string()
+	if animation != animation_player.current_animation:
+		animation_player.stop(true)
+	animation_player.play(animation)
+			
+func _get_direction_string() -> String:
+	var angle_deg = round(rad2deg(roll_vector.angle()))
+	if angle_deg > -90.0 and angle_deg <= 90.0:
+		return "Right"
+	return "Left"
+

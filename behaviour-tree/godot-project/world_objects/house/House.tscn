@@ -260,7 +260,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="House" type="Node2D"]
+[node name="House" type="Node2D" groups=["Houses"]]
 script = ExtResource( 1 )
 
 [node name="TileLayer1" type="TileMap" parent="."]
@@ -280,5 +280,8 @@ tile_data = PoolIntArray( -65538, 4, 0, 65535, 5, 0, 0, 6, 0 )
 [node name="Chimney" type="AnimatedSprite" parent="."]
 position = Vector2( -25, -38 )
 frames = SubResource( 32 )
-frame = 5
+frame = 14
 playing = true
+
+[node name="EnterLeavePosition" type="Position2D" parent="."]
+position = Vector2( -7, 20 )

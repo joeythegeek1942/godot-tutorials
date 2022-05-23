@@ -1239,10 +1239,12 @@ position = Vector2( 185, 125 )
 [node name="Lumberjack" parent="Objects/Villagers" instance=ExtResource( 4 )]
 position = Vector2( -68, 14 )
 target_location = Vector2( -68, 14 )
+house_path = NodePath("../../Buildings/LumberjackHouse")
 
 [node name="Forester" parent="Objects/Villagers" instance=ExtResource( 4 )]
 position = Vector2( -356, 169 )
 target_location = Vector2( -356, 169 )
+house_path = NodePath("../../Buildings/ForesterHouse")
 
 [node name="Trees" type="YSort" parent="Objects"]
 
@@ -1319,6 +1321,7 @@ position = Vector2( -652, -36 )
 position = Vector2( -591, 21 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -203, 91 )
 current = true
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
