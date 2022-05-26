@@ -15,7 +15,7 @@ enum {
 }
 
 var velocity = Vector2.ZERO
-var roll_vector = Vector2.DOWN
+var direction_vector = Vector2.DOWN
 var state = RUN
 var roll_finished = false
 var targets = []
@@ -41,7 +41,7 @@ func run_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		roll_vector = input_vector
+		direction_vector = input_vector
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -61,7 +61,7 @@ func run_state(delta):
 	
 func roll_state(delta):
 	if !roll_finished:
-		velocity = roll_vector * ROLL_SPEED
+		velocity = direction_vector * ROLL_SPEED
 	else:
 		velocity = velocity * 0.9
 	velocity = move_and_slide(velocity)
