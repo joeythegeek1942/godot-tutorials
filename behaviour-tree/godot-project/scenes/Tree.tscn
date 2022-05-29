@@ -41,7 +41,7 @@ height = 6.0
 
 [node name="Tree" type="StaticBody2D" groups=["Trees"]]
 script = ExtResource( 1 )
-state = 1
+state = 2
 
 [node name="ChopSprites" type="Node2D" parent="."]
 
@@ -62,9 +62,9 @@ visible = false
 texture = SubResource( 2 )
 
 [node name="GrowSprites" type="Node2D" parent="."]
-visible = false
 
 [node name="GrowSprite1" type="Sprite" parent="GrowSprites"]
+visible = false
 texture = SubResource( 3 )
 
 [node name="GrowSprite2" type="Sprite" parent="GrowSprites"]
@@ -82,6 +82,7 @@ position = Vector2( 0, -10 )
 texture = SubResource( 6 )
 
 [node name="GrownSprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -10 )
 texture = SubResource( 7 )
 
@@ -90,3 +91,6 @@ rotation = -1.5708
 shape = SubResource( 1 )
 
 [node name="GrowTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="GrowTimer" to="." method="_on_GrowTimer_timeout"]
