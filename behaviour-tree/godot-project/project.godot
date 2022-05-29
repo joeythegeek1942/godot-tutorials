@@ -104,6 +104,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/beehave/nodes/composites/sequence_star.gd"
 }, {
+"base": "Node2D",
+"class": "StashArea",
+"language": "GDScript",
+"path": "res://StashArea.gd"
+}, {
+"base": "StaticBody2D",
+"class": "StashBox",
+"language": "GDScript",
+"path": "res://world_objects/stashbox/StashBox.gd"
+}, {
+"base": "Sprite",
+"class": "StashSlot",
+"language": "GDScript",
+"path": "res://world_objects/stashbox/StashSlot.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Villager",
 "language": "GDScript",
@@ -134,6 +149,9 @@ _global_script_class_icons={
 "SelectorStarComposite": "res://addons/beehave/icons/selector.svg",
 "SequenceComposite": "res://addons/beehave/icons/sequencer.svg",
 "SequenceStarComposite": "res://addons/beehave/icons/sequencer.svg",
+"StashArea": "",
+"StashBox": "",
+"StashSlot": "",
 "Villager": "",
 "WoodTree": ""
 }
