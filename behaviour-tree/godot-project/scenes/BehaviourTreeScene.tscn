@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/SunnysideWorld_Tileset_V0.1.png" type="Texture" id=1]
 [ext_resource path="res://world_objects/lumbermill/Lumbermill.tscn" type="PackedScene" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://ai/LumberjackAI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ai/ForesterAI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://world_objects/stashbox/StashArea.tscn" type="PackedScene" id=9]
+[ext_resource path="res://util/CameraController.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ui/FocusUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/nature-sound.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/water.ogg" type="AudioStream" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1208,6 +1212,8 @@ outlines = [ PoolVector2Array( -211, -49, 162, -49, 162, 48, 273, 49, 272, 273, 
 [node name="BehaviourTreeScene" type="Navigation2D"]
 script = ExtResource( 5 )
 
+[node name="CameraController" parent="." instance=ExtResource( 10 )]
+
 [node name="World" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -1246,6 +1252,8 @@ stash_per_row = 4
 
 [node name="Lumberjack" parent="Objects/Villagers" instance=ExtResource( 4 )]
 position = Vector2( -68, 14 )
+villager_name = "Ralph"
+villager_profession = "Lumberjack"
 target_location = Vector2( -68, 14 )
 house_path = NodePath("../../Buildings/LumberjackHouse")
 
@@ -1253,6 +1261,8 @@ house_path = NodePath("../../Buildings/LumberjackHouse")
 
 [node name="Forester" parent="Objects/Villagers" instance=ExtResource( 4 )]
 position = Vector2( -356, 169 )
+villager_name = "Olaf"
+villager_profession = "Forester"
 target_location = Vector2( -356, 169 )
 house_path = NodePath("../../Buildings/ForesterHouse")
 
@@ -1260,6 +1270,8 @@ house_path = NodePath("../../Buildings/ForesterHouse")
 
 [node name="Trader" parent="Objects/Villagers" instance=ExtResource( 4 )]
 position = Vector2( 177, 155 )
+villager_name = "Gnarl"
+villager_profession = "Trader"
 house_path = NodePath("../../Buildings/TraderHouse")
 
 [node name="Trees" type="YSort" parent="Objects"]
@@ -1336,9 +1348,32 @@ position = Vector2( -652, -36 )
 [node name="Tree" parent="Objects/Trees" instance=ExtResource( 6 )]
 position = Vector2( -591, 21 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["Cameras"]]
 position = Vector2( -203, 91 )
 current = true
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = SubResource( 15 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FocusUI" parent="CanvasLayer" instance=ExtResource( 11 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 29.0
+margin_top = -96.0
+margin_right = 29.0
+margin_bottom = -96.0
+camera_controller_path = NodePath("../../CameraController")
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -20.0
+autoplay = true
+bus = "WorldAudio"
+
+[node name="WaterSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+autoplay = true
+max_distance = 300.0
+bus = "WorldAudio"

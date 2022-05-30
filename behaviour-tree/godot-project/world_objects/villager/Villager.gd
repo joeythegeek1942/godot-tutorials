@@ -13,6 +13,8 @@ enum AnimationState {
 	DIGGING = 6
 }
 
+export(String) var villager_name
+export(String) var villager_profession
 export(float) var ACCELERATION = 340
 export(float) var FRICTION = 670
 export(float) var MAX_SPEED = 75
