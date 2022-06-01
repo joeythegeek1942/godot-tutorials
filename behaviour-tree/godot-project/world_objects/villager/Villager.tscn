@@ -838,11 +838,11 @@ scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 10.0
-radius = 5.0
-neighbor_dist = 5.0
-path_max_distance = 50.0
-avoidance_enabled = true
+target_desired_distance = 20.0
+radius = 100.0
+neighbor_dist = 10.0
+time_horizon = 50.0
+path_max_distance = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Cameras"]]
 zoom = Vector2( 0.4, 0.4 )

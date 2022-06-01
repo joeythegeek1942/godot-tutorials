@@ -14,6 +14,7 @@ onready var walk_to_dock = $"%WalkToDock"
 onready var place_box_on_ship = $"%PlaceBoxOnShip"
 onready var has_ship_arrived = $"%HasShipArrived"
 onready var has_ship_stash_free_space = $"%HasShipStashFreeSpace"
+onready var is_stash_empty = $"%IsStashEmpty"
 
 func _ready():
 	# ensure _ready() has been finished everywhere else
@@ -24,3 +25,4 @@ func _ready():
 	place_box_on_ship.stash_area = ship.get_stash_area()
 	has_ship_arrived.ship = ship
 	has_ship_stash_free_space.stash_area = ship.get_stash_area()
+	is_stash_empty.stash_area = stash_area

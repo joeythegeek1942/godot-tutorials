@@ -274,6 +274,7 @@ attenuation = 1.80251
 bus = "WorldAudio"
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
 
 [connection signal="on_place" from="ShipPosition/StashArea" to="." method="_on_StashArea_on_place"]

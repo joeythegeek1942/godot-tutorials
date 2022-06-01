@@ -77,7 +77,7 @@ func move_state(delta, idle_animation, run_animation, max_speed, acceleration):
 		animation_tree.transition = idle_animation
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
-	navigation_agent.set_velocity(velocity)
+	velocity = move_and_slide(velocity)
 	
 func _physics_process(delta):
 	if not visible:
@@ -110,6 +110,3 @@ func _on_VoiceTimer_timeout():
 
 func _on_NavigationAgent2D_target_reached():
 	emit_signal("target_reached")
-
-func _on_NavigationAgent2D_velocity_computed(safe_velocity):
-	velocity = move_and_slide(velocity)

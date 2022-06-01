@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/beehave/nodes/composites/sequence_star.gd" type="Script" id=1]
 [ext_resource path="res://ai/TraderAI.gd" type="Script" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://ai/conditions/HasStashFreeSpace.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ai/conditions/HasShipArrived.tscn" type="PackedScene" id=11]
 [ext_resource path="res://addons/beehave/nodes/decorators/inverter.gd" type="Script" id=12]
+[ext_resource path="res://ai/conditions/IsStashEmpty.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ai/conditions/IsCarrying.tscn" type="PackedScene" id=14]
+[ext_resource path="res://addons/beehave/nodes/composites/sequence.gd" type="Script" id=15]
 
 [node name="TraderAI" type="Node"]
 script = ExtResource( 2 )
@@ -35,6 +38,17 @@ unique_name_in_owner = true
 script = ExtResource( 12 )
 
 [node name="HasShipStashFreeSpace" parent="Either/WaitForGoods/NeedsToWait/ShipIsFull" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+
+[node name="SequenceComposite" type="Node" parent="Either/WaitForGoods/NeedsToWait"]
+script = ExtResource( 15 )
+
+[node name="IsNotCarrying" type="Node" parent="Either/WaitForGoods/NeedsToWait/SequenceComposite"]
+script = ExtResource( 12 )
+
+[node name="IsCarrying" parent="Either/WaitForGoods/NeedsToWait/SequenceComposite/IsNotCarrying" instance=ExtResource( 14 )]
+
+[node name="IsStashEmpty" parent="Either/WaitForGoods/NeedsToWait/SequenceComposite" instance=ExtResource( 13 )]
 unique_name_in_owner = true
 
 [node name="Rest" parent="Either/WaitForGoods" instance=ExtResource( 7 )]
