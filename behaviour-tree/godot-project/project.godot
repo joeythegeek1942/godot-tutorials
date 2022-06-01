@@ -105,11 +105,16 @@ _global_script_classes=[ {
 "path": "res://addons/beehave/nodes/composites/sequence_star.gd"
 }, {
 "base": "Node2D",
+"class": "Ship",
+"language": "GDScript",
+"path": "res://world_objects/ship/Ship.gd"
+}, {
+"base": "Node2D",
 "class": "StashArea",
 "language": "GDScript",
-"path": "res://StashArea.gd"
+"path": "res://world_objects/stashbox/StashArea.gd"
 }, {
-"base": "StaticBody2D",
+"base": "RigidBody2D",
 "class": "StashBox",
 "language": "GDScript",
 "path": "res://world_objects/stashbox/StashBox.gd"
@@ -149,6 +154,7 @@ _global_script_class_icons={
 "SelectorStarComposite": "res://addons/beehave/icons/selector.svg",
 "SequenceComposite": "res://addons/beehave/icons/sequencer.svg",
 "SequenceStarComposite": "res://addons/beehave/icons/sequencer.svg",
+"Ship": "",
 "StashArea": "",
 "StashBox": "",
 "StashSlot": "",
@@ -199,6 +205,10 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
 }
 
 [input]

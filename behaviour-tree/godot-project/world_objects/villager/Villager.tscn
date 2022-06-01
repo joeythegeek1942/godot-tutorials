@@ -1,8 +1,16 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://world_objects/villager/Villager.gd" type="Script" id=1]
 [ext_resource path="res://assets/sunnyside_world_chatacter_anim_GOBLIN.png" type="Texture" id=2]
 [ext_resource path="res://util/BlendPositionAnimationTree.gd" type="Script" id=3]
+[ext_resource path="res://util/JukeBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/goblin-02.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/goblin-01.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/goblin-03.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/goblin-04.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/goblin-05.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/goblin-07.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/goblin-06.ogg" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=26]
 resource_name = "Carry_Left"
@@ -755,7 +763,7 @@ max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id=5]
-graph_offset = Vector2( -587.557, -3.23611 )
+graph_offset = Vector2( -562, -388 )
 nodes/Carry/node = SubResource( 17 )
 nodes/Carry/position = Vector2( -240, -60 )
 nodes/Chopping/node = SubResource( 18 )
@@ -773,7 +781,7 @@ nodes/Transition/position = Vector2( 120, 60 )
 nodes/Watering/node = SubResource( 20 )
 nodes/Watering/position = Vector2( -240, 220 )
 nodes/output/position = Vector2( 300, 60 )
-node_connections = [ "output", 0, "Transition", "Transition", 0, "Run", "Transition", 1, "Idle", "Transition", 2, "Carry", "Transition", 3, "Chopping", "Transition", 4, "Watering", "Transition", 5, "Doing", "Transition", 6, "Digging" ]
+node_connections = [ "Transition", 0, "Run", "Transition", 1, "Idle", "Transition", 2, "Carry", "Transition", 3, "Chopping", "Transition", 4, "Watering", "Transition", 5, "Doing", "Transition", 6, "Digging", "output", 0, "Transition" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
@@ -818,7 +826,7 @@ parameters/Digging/blend_position = Vector2( 0, 0 )
 parameters/Doing/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( -0.974132, -0.00243306 )
 parameters/Idle/3/playback = SubResource( 12 )
-parameters/Run/blend_position = Vector2( -0.986345, -0.00464392 )
+parameters/Run/blend_position = Vector2( -0.117572, 0.0903158 )
 parameters/Transition/current = 3
 parameters/Watering/blend_position = Vector2( 0, 0 )
 script = ExtResource( 3 )
@@ -830,11 +838,70 @@ scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 0.1
-neighbor_dist = 10.0
-max_neighbors = 20
-path_max_distance = 20.0
+target_desired_distance = 10.0
+radius = 5.0
+neighbor_dist = 5.0
+path_max_distance = 50.0
+avoidance_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Cameras"]]
 zoom = Vector2( 0.4, 0.4 )
 smoothing_enabled = true
+
+[node name="VoiceSounds" parent="." instance=ExtResource( 4 )]
+
+[node name="Voice1" type="AudioStreamPlayer2D" parent="VoiceSounds"]
+stream = ExtResource( 6 )
+volume_db = -30.0
+max_distance = 500.0
+attenuation = 3.86375
+bus = "WorldAudio"
+
+[node name="Voice2" type="AudioStreamPlayer2D" parent="VoiceSounds"]
+stream = ExtResource( 5 )
+volume_db = -30.0
+max_distance = 500.0
+attenuation = 3.86375
+bus = "WorldAudio"
+
+[node name="Voice3" type="AudioStreamPlayer2D" parent="VoiceSounds"]
+stream = ExtResource( 7 )
+volume_db = -30.0
+max_distance = 500.0
+attenuation = 3.86375
+bus = "WorldAudio"
+
+[node name="Voice4" type="AudioStreamPlayer2D" parent="VoiceSounds"]
+stream = ExtResource( 8 )
+volume_db = -30.0
+max_distance = 500.0
+attenuation = 3.86375
+bus = "WorldAudio"
+
+[node name="Voice5" type="AudioStreamPlayer2D" parent="VoiceSounds"]
+stream = ExtResource( 9 )
+volume_db = -30.0
+max_distance = 500.0
+attenuation = 3.86375
+bus = "WorldAudio"
+
+[node name="Voice6" type="AudioStreamPlayer2D" parent="VoiceSounds"]
+stream = ExtResource( 11 )
+volume_db = -30.0
+max_distance = 500.0
+attenuation = 3.86375
+bus = "WorldAudio"
+
+[node name="Voice7" type="AudioStreamPlayer2D" parent="VoiceSounds"]
+stream = ExtResource( 10 )
+volume_db = -30.0
+max_distance = 400.0
+attenuation = 3.86375
+bus = "WorldAudio"
+
+[node name="VoiceTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_velocity_computed"]
+[connection signal="timeout" from="VoiceTimer" to="." method="_on_VoiceTimer_timeout"]

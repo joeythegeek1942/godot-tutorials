@@ -2,6 +2,7 @@ class_name Villager
 extends KinematicBody2D
 
 signal action_performed()
+signal target_reached
 
 enum AnimationState {
 	RUN = 0,
@@ -24,6 +25,8 @@ export(NodePath) var house_path
 onready var animation_tree:BlendPositionAnimationTree = $AnimationTree
 onready var navigation_agent = $NavigationAgent2D
 onready var house:House = get_node(house_path)
+onready var voice_sounds = $VoiceSounds
+onready var voice_timer = $VoiceTimer
 
 var velocity = Vector2.ZERO
 var state = AnimationState.IDLE
@@ -31,9 +34,14 @@ var move_direction = Vector2.ZERO
 var last_move_velocity = Vector2.ZERO
 
 func _ready():
+	randomize()
 	animation_tree.active = true
 	target_location = global_position
 	navigation_agent.set_target_location(target_location)
+	voice_timer.start(rand_range(8.0, 20.0))
+	
+func get_house() -> House:
+	return house
 	
 func water():
 	state = AnimationState.WATERING
@@ -49,6 +57,9 @@ func dig():
 	
 func carry():
 	state = AnimationState.CARRY
+	
+func is_carrying():
+	return state == AnimationState.CARRY
 	
 func reset():
 	state = AnimationState.RUN
@@ -66,9 +77,11 @@ func move_state(delta, idle_animation, run_animation, max_speed, acceleration):
 		animation_tree.transition = idle_animation
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
-	velocity = move_and_slide(velocity)
+	navigation_agent.set_velocity(velocity)
 	
 func _physics_process(delta):
+	if not visible:
+		return
 	var next_location = navigation_agent.get_next_location()
 	var direction = (next_location - global_transform.origin).normalized()
 	move(direction)
@@ -90,3 +103,13 @@ func _set_target_location(tl):
 	target_location = tl
 	if navigation_agent != null:
 		navigation_agent.set_target_location(target_location)
+
+func _on_VoiceTimer_timeout():
+	voice_sounds.play()
+	voice_timer.start(rand_range(8.0, 20.0))
+
+func _on_NavigationAgent2D_target_reached():
+	emit_signal("target_reached")
+
+func _on_NavigationAgent2D_velocity_computed(safe_velocity):
+	velocity = move_and_slide(velocity)

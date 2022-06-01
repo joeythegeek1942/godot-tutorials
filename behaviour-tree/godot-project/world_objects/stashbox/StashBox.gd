@@ -1,2 +1,2 @@
 class_name StashBox
-extends StaticBody2D
+extends RigidBody2D

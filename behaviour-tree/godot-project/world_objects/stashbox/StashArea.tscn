@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://StashArea.gd" type="Script" id=1]
+[ext_resource path="res://world_objects/stashbox/StashArea.gd" type="Script" id=1]
 
 [node name="StashArea" type="Node2D" groups=["StashArea"]]
 script = ExtResource( 1 )
