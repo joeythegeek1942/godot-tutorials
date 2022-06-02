@@ -18,6 +18,7 @@ onready var grown_sprite = $GrownSprite
 onready var chop_sprites = $ChopSprites.get_children()
 onready var falling_tree_sound = $FallingTreeSound
 onready var chop_tree_sound = $ChopSounds
+onready var plant_sounds = $PlantSounds
 
 var grow_stage:int = -1
 var chop_stage:int = -1
@@ -38,6 +39,7 @@ func is_completely_chopped() -> bool:
 
 func plant() -> void:
 	if is_completely_chopped() or state == TreeState.PLANTED:
+		plant_sounds.play()
 		chop_stage = -1
 		state = TreeState.PLANTED
 		planted_sprite.visible = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://world_objects/villager/Villager.gd" type="Script" id=1]
 [ext_resource path="res://assets/sunnyside_world_chatacter_anim_GOBLIN.png" type="Texture" id=2]
+[ext_resource path="res://assets/watering.ogg" type="AudioStream" id=3]
 [ext_resource path="res://util/JukeBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/goblin-02.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/goblin-01.ogg" type="AudioStream" id=6]
@@ -1182,6 +1183,13 @@ stream = ExtResource( 19 )
 volume_db = -20.0
 max_distance = 700.0
 attenuation = 3.36358
+bus = "WorldAudio"
+
+[node name="WateringSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+max_distance = 700.0
+attenuation = 2.0
 bus = "WorldAudio"
 
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_target_reached"]

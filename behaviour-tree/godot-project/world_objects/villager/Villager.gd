@@ -38,6 +38,7 @@ onready var navigation_agent = $NavigationAgent2D
 onready var house:House = get_node(house_path)
 onready var voice_sounds = $VoiceSounds
 onready var grass_walk_sounds = $WalkOnGrassSounds
+onready var watering_sound = $WateringSound
 
 var velocity = Vector2.ZERO
 var state = AnimationState.IDLE
@@ -56,6 +57,7 @@ func get_house() -> House:
 func water():
 	state = AnimationState.WATERING
 	voice_sounds.play()
+	watering_sound.play()
 
 func chop():
 	state = AnimationState.CHOPPING

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Tree.gd" type="Script" id=1]
 [ext_resource path="res://assets/SunnysideWorld_Tileset_V0.1.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://assets/chop-tree-06.ogg" type="AudioStream" id=10]
 [ext_resource path="res://assets/chop-tree-07.ogg" type="AudioStream" id=11]
 [ext_resource path="res://util/JukeBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/shovel-01.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/shovel-02.ogg" type="AudioStream" id=14]
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
@@ -100,7 +102,7 @@ rotation = -1.5708
 shape = SubResource( 1 )
 
 [node name="GrowTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 25.0
 autostart = true
 
 [node name="FallingTreeSound" type="AudioStreamPlayer2D" parent="."]
@@ -159,5 +161,21 @@ stream = ExtResource( 7 )
 volume_db = -5.0
 max_distance = 1000.0
 attenuation = 2.37841
+
+[node name="PlantSounds" parent="." instance=ExtResource( 12 )]
+
+[node name="PlantSound01" type="AudioStreamPlayer2D" parent="PlantSounds"]
+stream = ExtResource( 13 )
+volume_db = -15.0
+max_distance = 800.0
+attenuation = 1.51572
+bus = "WorldAudio"
+
+[node name="PlantSound02" type="AudioStreamPlayer2D" parent="PlantSounds"]
+stream = ExtResource( 14 )
+volume_db = -15.0
+max_distance = 800.0
+attenuation = 1.51572
+bus = "WorldAudio"
 
 [connection signal="timeout" from="GrowTimer" to="." method="_on_GrowTimer_timeout"]
