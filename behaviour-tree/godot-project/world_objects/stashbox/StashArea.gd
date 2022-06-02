@@ -13,6 +13,9 @@ export(bool) var show_ground = true
 
 onready var StashSlot = preload("res://world_objects/stashbox/StashSlot.tscn")
 onready var slots = $Slots
+onready var place_sound = $PlaceSound
+onready var take_sound = $TakeSound
+
 var pointer = Vector2.ZERO
 
 func _ready():
@@ -46,12 +49,14 @@ func get_slot_position(slot:int) -> Vector2:
 func place(slot:int) -> bool:
 	var success = slots.get_child(slot).place_box()
 	if success:
+		place_sound.play()
 		emit_signal("on_place")
 	return success
 	
 func take(slot:int) -> StashSlot:
 	var success = slots.get_child(slot).take_box()
 	if success:
+		take_sound.play()
 		emit_signal("on_take")
 	return success
 	
