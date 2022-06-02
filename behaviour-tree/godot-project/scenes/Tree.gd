@@ -16,6 +16,8 @@ onready var planted_sprite = $PlantedSprite
 onready var grow_sprites = $GrowSprites.get_children()
 onready var grown_sprite = $GrownSprite
 onready var chop_sprites = $ChopSprites.get_children()
+onready var falling_tree_sound = $FallingTreeSound
+onready var chop_tree_sound = $ChopSounds
 
 var grow_stage:int = -1
 var chop_stage:int = -1
@@ -50,6 +52,7 @@ func can_chop() -> bool:
 
 func chop() -> void:
 	if can_chop():
+		chop_tree_sound.play()
 		grown_sprite.visible = false
 		if chop_stage >= 0:
 			chop_sprites[chop_stage].visible = false
@@ -57,6 +60,7 @@ func chop() -> void:
 		chop_sprites[chop_stage].visible = true
 		if chop_stage == chop_sprites.size() - 1:
 			state = TreeState.CHOPPED
+			falling_tree_sound.play()
 	
 func _on_GrowTimer_timeout():
 	if state == TreeState.GROWING:

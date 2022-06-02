@@ -1,7 +1,7 @@
 class_name Villager
 extends KinematicBody2D
 
-signal action_performed()
+signal action_performed
 signal target_reached
 
 enum AnimationState {
