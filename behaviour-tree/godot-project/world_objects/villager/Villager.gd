@@ -16,8 +16,8 @@ enum AnimationState {
 
 export(String) var villager_name
 export(String) var villager_profession
-export(float) var ACCELERATION = 340
-export(float) var FRICTION = 670
+export(float) var ACCELERATION = 540
+export(float) var FRICTION = 770
 export(float) var MAX_SPEED = 75
 export(Vector2) var target_location setget _set_target_location
 export(NodePath) var house_path
@@ -26,7 +26,7 @@ onready var animation_tree:BlendPositionAnimationTree = $AnimationTree
 onready var navigation_agent = $NavigationAgent2D
 onready var house:House = get_node(house_path)
 onready var voice_sounds = $VoiceSounds
-onready var voice_timer = $VoiceTimer
+onready var grass_walk_sounds = $WalkOnGrassSounds
 
 var velocity = Vector2.ZERO
 var state = AnimationState.IDLE
@@ -38,31 +38,40 @@ func _ready():
 	animation_tree.active = true
 	target_location = global_position
 	navigation_agent.set_target_location(target_location)
-	voice_timer.start(rand_range(8.0, 20.0))
 	
 func get_house() -> House:
 	return house
 	
 func water():
 	state = AnimationState.WATERING
+	voice_sounds.play()
 
 func chop():
 	state = AnimationState.CHOPPING
+	voice_sounds.play()
 	
 func do():
 	state = AnimationState.DOING
+	voice_sounds.play()
 	
 func dig():
 	state = AnimationState.DIGGING
+	voice_sounds.play()
 	
 func carry():
 	state = AnimationState.CARRY
+	voice_sounds.play()
 	
 func is_carrying():
 	return state == AnimationState.CARRY
 	
 func reset():
 	state = AnimationState.RUN
+	voice_sounds.play()
+	
+func idle():
+	state = AnimationState.IDLE
+	velocity = Vector2.ZERO
 	
 func move(direction:Vector2) -> void:
 	move_direction = direction
@@ -104,9 +113,10 @@ func _set_target_location(tl):
 	if navigation_agent != null:
 		navigation_agent.set_target_location(target_location)
 
-func _on_VoiceTimer_timeout():
-	voice_sounds.play()
-	voice_timer.start(rand_range(8.0, 20.0))
-
 func _on_NavigationAgent2D_target_reached():
 	emit_signal("target_reached")
+
+func _play_walk_sound():
+	if not visible:
+		return
+	grass_walk_sounds.play()

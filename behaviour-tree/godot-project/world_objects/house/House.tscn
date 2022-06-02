@@ -284,7 +284,7 @@ frames = SubResource( 32 )
 frame = 29
 
 [node name="EnterLeavePosition" type="Position2D" parent="."]
-position = Vector2( -7, 20 )
+position = Vector2( -8, 13 )
 
 [node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )

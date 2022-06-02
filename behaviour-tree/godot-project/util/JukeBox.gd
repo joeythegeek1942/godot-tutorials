@@ -3,6 +3,9 @@ extends Node2D
 
 var random = RandomNumberGenerator.new()
 
+func _ready():
+	randomize()
+
 func play():
 	if get_child_count() < 1:
 		return
