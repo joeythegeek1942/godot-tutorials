@@ -1,8 +1,7 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://world_objects/villager/Villager.gd" type="Script" id=1]
 [ext_resource path="res://assets/sunnyside_world_chatacter_anim_GOBLIN.png" type="Texture" id=2]
-[ext_resource path="res://util/BlendPositionAnimationTree.gd" type="Script" id=3]
 [ext_resource path="res://util/JukeBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/goblin-02.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/goblin-01.ogg" type="AudioStream" id=6]
@@ -214,7 +213,6 @@ tracks/6/keys = {
 [sub_resource type="Animation" id=38]
 resource_name = "Chopping_Left"
 length = 0.75
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -247,11 +245,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.525 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.525, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_action_performed"
+}, {
+"args": [  ],
+"method": "_animation_finished"
 } ]
 }
 tracks/3/type = "value"
@@ -270,7 +271,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=37]
 resource_name = "Chopping_Right"
 length = 0.75
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -303,11 +303,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.525 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.525, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_action_performed"
+}, {
+"args": [  ],
+"method": "_animation_finished"
 } ]
 }
 tracks/3/type = "value"
@@ -326,7 +329,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=51]
 resource_name = "Digging_Left"
 length = 0.975
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -359,11 +361,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.525 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.525, 0.975 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_action_performed"
+}, {
+"args": [  ],
+"method": "_animation_finished"
 } ]
 }
 tracks/3/type = "value"
@@ -382,7 +387,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=50]
 resource_name = "Digging_Right"
 length = 0.975
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -415,11 +419,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.525 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.525, 0.975 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_action_performed"
+}, {
+"args": [  ],
+"method": "_animation_finished"
 } ]
 }
 tracks/3/type = "value"
@@ -438,7 +445,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=44]
 resource_name = "Doing_Left"
 length = 0.6
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -494,7 +500,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=43]
 resource_name = "Doing_Right"
 length = 0.6
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -899,7 +904,6 @@ tracks/6/keys = {
 [sub_resource type="Animation" id=32]
 resource_name = "Watering_Left"
 length = 0.375
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -932,11 +936,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.375 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.225, 0.375 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_action_performed"
+}, {
+"args": [  ],
+"method": "_animation_finished"
 } ]
 }
 tracks/3/type = "value"
@@ -955,7 +962,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=31]
 resource_name = "Watering_Right"
 length = 0.375
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -988,11 +994,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.375 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.225, 0.375 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_action_performed"
+}, {
+"args": [  ],
+"method": "_animation_finished"
 } ]
 }
 tracks/3/type = "value"
@@ -1007,220 +1016,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
-
-[sub_resource type="AnimationNodeAnimation" id=27]
-animation = "Carry_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=28]
-animation = "Carry_Right"
-
-[sub_resource type="AnimationNodeAnimation" id=29]
-animation = "Carry_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=30]
-animation = "Carry_Right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=17]
-blend_point_0/node = SubResource( 27 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 28 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 29 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 30 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=39]
-animation = "Chopping_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=40]
-animation = "Chopping_Right"
-
-[sub_resource type="AnimationNodeAnimation" id=41]
-animation = "Chopping_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=42]
-animation = "Chopping_Right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=18]
-blend_point_0/node = SubResource( 39 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 40 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 41 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 42 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=52]
-animation = "Digging_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=53]
-animation = "Digging_Right"
-
-[sub_resource type="AnimationNodeAnimation" id=54]
-animation = "Digging_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=55]
-animation = "Digging_Right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=49]
-blend_point_0/node = SubResource( 52 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 53 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 54 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 55 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=45]
-animation = "Doing_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=46]
-animation = "Doing_Right"
-
-[sub_resource type="AnimationNodeAnimation" id=47]
-animation = "Doing_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=48]
-animation = "Doing_Right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=19]
-blend_point_0/node = SubResource( 45 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 46 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 47 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 48 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Idle_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=8]
-animation = "Idle_Right"
-
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "Idle_Left"
-
-[sub_resource type="AnimationNodeStateMachine" id=10]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=11]
-blend_point_0/node = SubResource( 7 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 8 )
-blend_point_1/pos = Vector2( 1, -0.1 )
-blend_point_2/node = SubResource( 9 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 10 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=21]
-animation = "Run_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=22]
-animation = "Run_Right"
-
-[sub_resource type="AnimationNodeAnimation" id=23]
-animation = "Run_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=24]
-animation = "Run_Right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=15]
-blend_point_0/node = SubResource( 21 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 22 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 23 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 24 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeTransition" id=16]
-input_count = 7
-input_0/name = "Run"
-input_0/auto_advance = false
-input_1/name = "Idle"
-input_1/auto_advance = false
-input_2/name = "Carry"
-input_2/auto_advance = false
-input_3/name = "Chopping"
-input_3/auto_advance = false
-input_4/name = "Watering"
-input_4/auto_advance = false
-input_5/name = "Doing"
-input_5/auto_advance = false
-input_6/name = "Digging"
-input_6/auto_advance = false
-
-[sub_resource type="AnimationNodeAnimation" id=33]
-animation = "Watering_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=34]
-animation = "Watering_Right"
-
-[sub_resource type="AnimationNodeAnimation" id=35]
-animation = "Watering_Left"
-
-[sub_resource type="AnimationNodeAnimation" id=36]
-animation = "Watering_Right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=20]
-blend_point_0/node = SubResource( 33 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 34 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 35 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 36 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeBlendTree" id=5]
-graph_offset = Vector2( -562, -388 )
-nodes/Carry/node = SubResource( 17 )
-nodes/Carry/position = Vector2( -240, -60 )
-nodes/Chopping/node = SubResource( 18 )
-nodes/Chopping/position = Vector2( -240, 80 )
-nodes/Digging/node = SubResource( 49 )
-nodes/Digging/position = Vector2( -240, 500 )
-nodes/Doing/node = SubResource( 19 )
-nodes/Doing/position = Vector2( -240, 360 )
-nodes/Idle/node = SubResource( 11 )
-nodes/Idle/position = Vector2( -240, -200 )
-nodes/Run/node = SubResource( 15 )
-nodes/Run/position = Vector2( -240, -340 )
-nodes/Transition/node = SubResource( 16 )
-nodes/Transition/position = Vector2( 120, 60 )
-nodes/Watering/node = SubResource( 20 )
-nodes/Watering/position = Vector2( -240, 220 )
-nodes/output/position = Vector2( 300, 60 )
-node_connections = [ "Transition", 0, "Run", "Transition", 1, "Idle", "Transition", 2, "Carry", "Transition", 3, "Chopping", "Transition", 4, "Watering", "Transition", 5, "Doing", "Transition", 6, "Digging", "output", 0, "Transition" ]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -1263,32 +1058,18 @@ anims/Run_Right = SubResource( 13 )
 anims/Watering_Left = SubResource( 32 )
 anims/Watering_Right = SubResource( 31 )
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 5 )
-anim_player = NodePath("../AnimationPlayer")
-parameters/Carry/blend_position = Vector2( 0, 0 )
-parameters/Chopping/blend_position = Vector2( 0, 0 )
-parameters/Digging/blend_position = Vector2( 0, 0 )
-parameters/Doing/blend_position = Vector2( 0, 0 )
-parameters/Idle/blend_position = Vector2( -0.974132, -0.00243306 )
-parameters/Idle/3/playback = SubResource( 12 )
-parameters/Run/blend_position = Vector2( -0.117572, 0.0903158 )
-parameters/Transition/current = 3
-parameters/Watering/blend_position = Vector2( 0, 0 )
-script = ExtResource( 3 )
-transition = 1
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 30.0
-radius = 200.0
-neighbor_dist = 20.0
-time_horizon = 500.0
-path_max_distance = 50.0
+target_desired_distance = 20.0
+radius = 30.0
+neighbor_dist = 50.0
+time_horizon = 100.0
+path_max_distance = 30.0
+avoidance_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Cameras"]]
 zoom = Vector2( 0.4, 0.4 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://addons/beehave/nodes/composites/sequence.gd" type="Script" id=1]
 [ext_resource path="res://ai/LumberjackAI.gd" type="Script" id=2]
@@ -13,12 +13,13 @@
 [ext_resource path="res://ai/actions/ChopTreeAction.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ai/actions/WalkToStashAction.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ai/actions/PlaceBoxAction.tscn" type="PackedScene" id=13]
+[ext_resource path="res://addons/beehave/nodes/composites/selector_star.gd" type="Script" id=14]
 
 [node name="LumberjackAI" type="Node"]
 script = ExtResource( 2 )
 
 [node name="Either" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource( 14 )
 
 [node name="WaitForTrees" type="Node" parent="Either"]
 script = ExtResource( 1 )
@@ -45,6 +46,7 @@ script = ExtResource( 8 )
 [node name="LeaveHouseAction" parent="Either/ChopWood" instance=ExtResource( 9 )]
 
 [node name="WalkToClosestTreeAction" parent="Either/ChopWood" instance=ExtResource( 10 )]
+state = 1
 
 [node name="ChopTreeAction" parent="Either/ChopWood" instance=ExtResource( 11 )]
 

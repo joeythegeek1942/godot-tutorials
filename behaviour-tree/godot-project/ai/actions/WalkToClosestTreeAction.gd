@@ -1,5 +1,12 @@
 extends ActionLeaf
 
+enum State {
+	CHOPPED,
+	GROWN
+}
+
+export(State) var state
+
 var target_reached = false
 var closest_tree
 
@@ -27,8 +34,12 @@ func _find_closest_tree(actor):
 	var current_distance = 9999999
 	var closest_tree = null
 	for tree in get_tree().get_nodes_in_group("Trees"):
-		if not tree.can_chop():
-			continue
+		if state == State.GROWN:
+			if not tree.can_chop():
+				continue
+		if state == State.CHOPPED:
+			if not tree.is_completely_chopped():
+				continue
 		var tree_distance = actor.global_position.distance_to(tree.global_position)
 		if tree_distance < current_distance:
 			current_distance = tree_distance
