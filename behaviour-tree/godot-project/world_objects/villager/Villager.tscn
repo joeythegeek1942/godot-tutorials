@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://world_objects/villager/Villager.gd" type="Script" id=1]
 [ext_resource path="res://assets/sunnyside_world_chatacter_anim_GOBLIN.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/footsteps-grass-06.ogg" type="AudioStream" id=17]
 [ext_resource path="res://assets/footsteps-grass-07.ogg" type="AudioStream" id=18]
 [ext_resource path="res://assets/footsteps-grass-08.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/shadow.png" type="Texture" id=20]
 
 [sub_resource type="Animation" id=26]
 resource_name = "Carry_Left"
@@ -1233,6 +1234,10 @@ position = Vector2( 5, -2 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 12 )
 hframes = 8
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, -2 )
+texture = ExtResource( 20 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -6 )
