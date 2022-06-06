@@ -57,6 +57,7 @@ func can_chop() -> bool:
 
 func chop() -> void:
 	if can_chop():
+		state = TreeState.CHOPPING
 		chop_tree_sound.play()
 		grown_sprite.visible = false
 		if chop_stage >= 0:
