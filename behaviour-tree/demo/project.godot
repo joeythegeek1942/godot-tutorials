@@ -127,7 +127,7 @@ _global_script_classes=[ {
 "base": "ActionLeaf",
 "class": "TreeAction",
 "language": "GDScript",
-"path": "res://ai/actions/TreeAction.gd"
+"path": "res://ai/actions/OakTreeAction.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Villager",
@@ -137,7 +137,7 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "WoodTree",
 "language": "GDScript",
-"path": "res://scenes/Tree.gd"
+"path": "res://scenes/OakTree.gd"
 } ]
 _global_script_class_icons={
 "ActionLeaf": "res://addons/beehave/icons/action.svg",
