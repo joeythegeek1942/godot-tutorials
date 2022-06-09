@@ -1,14 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends TreeAction
-
-func _start_action(actor):
-	actor.dig()
-	
-func _change_tree(tree):
-	tree.plant()
-"
+[ext_resource path="res://ai/actions/PlantTreeAction.gd" type="Script" id=1]
 
 [node name="PlantTreeAction" type="Node"]
-script = SubResource( 1 )
+script = ExtResource( 1 )

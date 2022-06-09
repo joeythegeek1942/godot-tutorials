@@ -5,16 +5,16 @@
 [ext_resource path="res://world_objects/house/House.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world_objects/villager/Villager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/BehaviourTreeScene.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/OakTree.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ai/LumberjackAI.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ai/TraderAI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ai/ForesterAI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://world_objects/stashbox/StashArea.tscn" type="PackedScene" id=9]
 [ext_resource path="res://util/CameraController.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/FocusUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/nature-sound.ogg" type="AudioStream" id=12]
 [ext_resource path="res://assets/water.ogg" type="AudioStream" id=13]
 [ext_resource path="res://world_objects/ship/Ship.tscn" type="PackedScene" id=14]
-[ext_resource path="res://ai/ForesterAI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://ai/TraderAI.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1269,7 +1269,7 @@ villager_profession = "Forester"
 target_location = Vector2( -356, 169 )
 house_path = NodePath("../../Buildings/ForesterHouse")
 
-[node name="ForesterAI" parent="Objects/Villagers/Forester" instance=ExtResource( 15 )]
+[node name="ForesterAI" parent="Objects/Villagers/Forester" instance=ExtResource( 8 )]
 
 [node name="Trader" parent="Objects/Villagers" instance=ExtResource( 4 )]
 position = Vector2( 177, 155 )
@@ -1277,7 +1277,7 @@ villager_name = "Gnarl"
 villager_profession = "Trader"
 house_path = NodePath("../../Buildings/TraderHouse")
 
-[node name="TraderAI" parent="Objects/Villagers/Trader" instance=ExtResource( 8 )]
+[node name="TraderAI" parent="Objects/Villagers/Trader" instance=ExtResource( 15 )]
 ship_path = NodePath("../../../Ship")
 stash_area_path = NodePath("../../../Buildings/StashArea")
 boat_dock_position_path = NodePath("../../../../DockPosition")
