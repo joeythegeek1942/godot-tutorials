@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://addons/beehave/nodes/beehave_root.gd" type="Script" id=1]
 [ext_resource path="res://addons/beehave/nodes/composites/sequence.gd" type="Script" id=2]
@@ -10,14 +10,13 @@
 [ext_resource path="res://ai/actions/LeaveHouseAction.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ai/actions/WalkToClosestTreeAction.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ai/actions/PlantTreeAction.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/beehave/nodes/composites/selector_star.gd" type="Script" id=11]
 [ext_resource path="res://ai/actions/WaterTreeAction.tscn" type="PackedScene" id=12]
 
 [node name="ForesterAI" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Either" type="Node" parent="."]
-script = ExtResource( 11 )
+script = ExtResource( 5 )
 
 [node name="WaitForTrees" type="Node" parent="Either"]
 script = ExtResource( 2 )

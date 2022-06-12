@@ -23,7 +23,7 @@ script = ExtResource( 2 )
 script = ExtResource( 9 )
 
 [node name="WaitForGoods" type="Node" parent="Either"]
-script = ExtResource( 1 )
+script = ExtResource( 15 )
 
 [node name="NeedsToWait" type="Node" parent="Either/WaitForGoods"]
 script = ExtResource( 9 )
