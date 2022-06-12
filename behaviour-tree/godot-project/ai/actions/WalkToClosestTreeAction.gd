@@ -5,7 +5,7 @@ enum State {
 	GROWN
 }
 
-export(State) var state = State.GROWN
+export(State) var state
 
 var target_reached = false
 var closest_tree

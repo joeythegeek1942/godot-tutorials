@@ -5,7 +5,7 @@ var ship:Ship setget _set_ship
 var arrived = false
 
 func tick(actor, blackboard):
-	if arrived:
+	if arrived or not ship.departed:
 		return SUCCESS
 	return FAILURE
 
