@@ -3,8 +3,6 @@ extends ActionLeaf
 var target_reached = false
 
 func tick(actor, blackboard):
-	if actor.villager_name == "Gnarl":
-		print("walk to house action")
 	if not actor.is_connected("target_reached", self, "_target_reached"):
 		actor.connect("target_reached", self, "_target_reached")
 		actor.reset()

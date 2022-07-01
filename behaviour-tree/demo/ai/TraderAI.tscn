@@ -40,15 +40,15 @@ script = ExtResource( 12 )
 [node name="HasShipStashFreeSpace" parent="Either/WaitForGoods/NeedsToWait/ShipIsFull" instance=ExtResource( 10 )]
 unique_name_in_owner = true
 
-[node name="SequenceComposite" type="Node" parent="Either/WaitForGoods/NeedsToWait"]
+[node name="NoBoxAvailable" type="Node" parent="Either/WaitForGoods/NeedsToWait"]
 script = ExtResource( 15 )
 
-[node name="IsNotCarrying" type="Node" parent="Either/WaitForGoods/NeedsToWait/SequenceComposite"]
+[node name="IsNotCarrying" type="Node" parent="Either/WaitForGoods/NeedsToWait/NoBoxAvailable"]
 script = ExtResource( 12 )
 
-[node name="IsCarrying" parent="Either/WaitForGoods/NeedsToWait/SequenceComposite/IsNotCarrying" instance=ExtResource( 14 )]
+[node name="IsCarrying" parent="Either/WaitForGoods/NeedsToWait/NoBoxAvailable/IsNotCarrying" instance=ExtResource( 14 )]
 
-[node name="IsStashEmpty" parent="Either/WaitForGoods/NeedsToWait/SequenceComposite" instance=ExtResource( 13 )]
+[node name="IsStashEmpty" parent="Either/WaitForGoods/NeedsToWait/NoBoxAvailable" instance=ExtResource( 13 )]
 unique_name_in_owner = true
 
 [node name="Rest" parent="Either/WaitForGoods" instance=ExtResource( 7 )]
