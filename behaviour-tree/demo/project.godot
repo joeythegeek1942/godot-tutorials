@@ -114,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://world_objects/stashbox/StashArea.gd"
 }, {
-"base": "Node2D",
+"base": "RigidBody2D",
 "class": "StashBox",
 "language": "GDScript",
 "path": "res://world_objects/stashbox/StashBox.gd"
