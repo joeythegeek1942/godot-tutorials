@@ -14,6 +14,9 @@ func tick(actor, blackboard):
 		
 		var response = c.tick(actor, blackboard)
 		
+		if actor.villager_name == "Olaf" and get_children().size() == 4:
+			print(str(response) + str(c.name) + " index" + str(successful_index))
+		
 		if c is ConditionLeaf:
 			blackboard.set("last_condition", c)
 			blackboard.set("last_condition_status", response)
