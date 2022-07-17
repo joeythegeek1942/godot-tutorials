@@ -1065,7 +1065,7 @@ scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 20.0
+target_desired_distance = 25.0
 radius = 30.0
 neighbor_dist = 50.0
 time_horizon = 100.0
