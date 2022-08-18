@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/SunnysideWorld_Tileset_V0.1.png" type="Texture" id=1]
 [ext_resource path="res://assets/ship-bell.ogg" type="AudioStream" id=2]
@@ -253,8 +253,13 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 2 ), Vector2( 0, 2 ), Vector2( 0, 1 ) ]
 }
 
-[node name="Ship" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 18, 32.5 )
+
+[node name="Ship" type="KinematicBody2D"]
 position = Vector2( 0, -522 )
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="ShipPosition" type="Node2D" parent="."]
@@ -307,9 +312,9 @@ attenuation = 1.80251
 one_shot = true
 autostart = true
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-estimate_radius = false
-radius = 100.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 5.5 )
+shape = SubResource( 22 )
 
 [connection signal="on_place" from="ShipPosition/StashArea" to="." method="_on_StashArea_on_place"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
