@@ -2,6 +2,8 @@ extends Node2D
 
 onready var villager = $"%Villager"
 onready var ship = $"%Ship"
+onready var debug_line = $"%Line2D"
+
 
 func _ready():
 	villager.swim()
@@ -11,3 +13,6 @@ func _on_Ship_arrive():
 	ship.get_stash_area().place(1)
 	ship.get_stash_area().place(2)
 	ship.get_stash_area().place(3)
+
+func _on_Villager_path_changed(path):
+	debug_line.points = path

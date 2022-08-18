@@ -4,6 +4,7 @@ extends KinematicBody2D
 signal action_performed
 signal animation_finished
 signal target_reached
+signal path_changed(path)
 
 enum AnimationState {
 	IDLE = 0,
@@ -21,19 +22,22 @@ export(float) var MAX_SPEED = 75
 
 onready var animation_player = $AnimationPlayer
 onready var voice_sounds = $VoiceSounds
+onready var navigation_agent:NavigationAgent2D = $NavigationAgent2D
 
 var velocity = Vector2.ZERO
 var state = AnimationState.IDLE
-var move_direction = Vector2.ZERO
 var last_move_velocity = Vector2.ZERO
 var current_animation = null
+var move_direction = Vector2.ZERO
+
+func make_sound():
+	voice_sounds.play()
 
 func _ready():
 	randomize()
 	
 func reset():
 	state = AnimationState.IDLE
-	voice_sounds.play()
 	
 func swim():
 	state = AnimationState.SWIM
@@ -42,25 +46,25 @@ func idle():
 	state = AnimationState.IDLE
 	velocity = Vector2.ZERO
 	
-func move(direction:Vector2) -> void:
-	move_direction = direction
+func set_target_location(target:Vector2) -> void:
+	navigation_agent.set_target_location(target)
 	
 func do_state(delta, animation):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	_play_animation(animation)
-	velocity = move_and_slide(velocity)
+	navigation_agent.set_velocity(velocity)
 	
 func move_state(delta, idle_animation, run_animation, max_speed, acceleration):
-	if move_direction != Vector2.ZERO:
-		last_move_velocity = move_direction
+
+	if not navigation_agent.is_navigation_finished():
+		var move_direction = global_position.direction_to(navigation_agent.get_next_location())
+		velocity = move_direction * MAX_SPEED
+		navigation_agent.set_velocity(velocity)
 		look_at_direction(move_direction)
 		_play_animation(run_animation)
-		velocity = velocity.move_toward(move_direction * max_speed, acceleration * delta)
 	else:
 		_play_animation(idle_animation)
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-
-	velocity = move_and_slide(velocity)
 	
 func _physics_process(delta):
 	if not visible:
@@ -106,3 +110,14 @@ func _get_direction_string(angle:float) -> String:
 	if angle_deg > -90.0 and angle_deg < 90.0:
 		return "Right"
 	return "Left"
+
+func _on_NavigationAgent2D_velocity_computed(safe_velocity):
+	if not navigation_agent.is_target_reached():
+		move_and_slide(safe_velocity)
+
+func _on_NavigationAgent2D_path_changed():
+	emit_signal("path_changed", navigation_agent.get_nav_path())
+
+
+func _on_NavigationAgent2D_navigation_finished():
+	emit_signal("path_changed", [])

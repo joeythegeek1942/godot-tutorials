@@ -307,5 +307,9 @@ attenuation = 1.80251
 one_shot = true
 autostart = true
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+estimate_radius = false
+radius = 100.0
+
 [connection signal="on_place" from="ShipPosition/StashArea" to="." method="_on_StashArea_on_place"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

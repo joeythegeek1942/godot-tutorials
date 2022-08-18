@@ -159,8 +159,8 @@ tracks/1/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
-height = 4.0
+radius = 2.0
+height = 0.0
 
 [node name="Villager" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -188,42 +188,58 @@ shape = SubResource( 1 )
 
 [node name="Voice1" type="AudioStreamPlayer2D" parent="VoiceSounds"]
 stream = ExtResource( 6 )
-volume_db = -30.0
+volume_db = -10.0
 max_distance = 1000.0
 attenuation = 3.86375
 
 [node name="Voice2" type="AudioStreamPlayer2D" parent="VoiceSounds"]
 stream = ExtResource( 5 )
-volume_db = -30.0
+volume_db = -10.0
 max_distance = 1000.0
 attenuation = 3.86375
 
 [node name="Voice3" type="AudioStreamPlayer2D" parent="VoiceSounds"]
 stream = ExtResource( 7 )
-volume_db = -30.0
+volume_db = -10.0
 max_distance = 1000.0
 attenuation = 3.86375
 
 [node name="Voice4" type="AudioStreamPlayer2D" parent="VoiceSounds"]
 stream = ExtResource( 8 )
-volume_db = -30.0
+volume_db = -10.0
 max_distance = 1000.0
 attenuation = 3.86375
 
 [node name="Voice5" type="AudioStreamPlayer2D" parent="VoiceSounds"]
 stream = ExtResource( 9 )
-volume_db = -30.0
+volume_db = -10.0
 max_distance = 1000.0
 attenuation = 3.86375
 
 [node name="Voice6" type="AudioStreamPlayer2D" parent="VoiceSounds"]
 stream = ExtResource( 11 )
-volume_db = -30.0
+volume_db = -10.0
 max_distance = 1000.0
 attenuation = 3.86375
 
 [node name="Voice7" type="AudioStreamPlayer2D" parent="VoiceSounds"]
 stream = ExtResource( 10 )
-volume_db = -30.0
+volume_db = -10.0
 max_distance = 1000.0
 attenuation = 3.86375
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 16.0
+target_desired_distance = 16.0
+path_max_distance = 10.0
+avoidance_enabled = true
+radius = 64.0
+neighbor_dist = 300.0
+time_horizon = 500.0
+max_speed = 300.0
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_navigation_finished"]
+[connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_path_changed"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_velocity_computed"]
