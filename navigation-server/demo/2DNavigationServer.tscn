@@ -37,11 +37,19 @@ unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="GameObjects/Villager"]
 current = true
+limit_left = -600
+limit_top = -450
+limit_right = 750
+limit_bottom = 800
+limit_smoothed = true
 smoothing_enabled = true
 
 [node name="Ship" parent="GameObjects" instance=ExtResource( 4 )]
-position = Vector2( 65, 20 )
+unique_name_in_owner = true
+position = Vector2( 0, 0 )
 
 [node name="MovementController" type="Node2D" parent="."]
 script = ExtResource( 5 )
 npc_path = NodePath("../GameObjects/Villager")
+
+[connection signal="arrive" from="GameObjects/Ship" to="." method="_on_Ship_arrive"]
