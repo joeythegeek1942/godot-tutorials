@@ -234,6 +234,7 @@ path_desired_distance = 16.0
 target_desired_distance = 16.0
 path_max_distance = 16.0
 avoidance_enabled = true
+max_speed = 70.0
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 radius = 16.0

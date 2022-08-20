@@ -60,6 +60,11 @@ config/name="2D Navigation Server"
 run/main_scene="res://2DNavigationServer.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+shapes/collision/shape_color=Color( 0.847059, 0.0705882, 0.470588, 0.419608 )
+shapes/navigation/geometry_color=Color( 0.45098, 0.25098, 1, 0.4 )
+
 [display]
 
 window/size/width=720

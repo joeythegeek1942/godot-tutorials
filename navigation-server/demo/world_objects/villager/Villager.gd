@@ -37,7 +37,7 @@ func _ready():
 	set_target_location(position)
 	
 	# inform NavigationObstacle2D about the navigation map (Godot 3.5)
-	#Navigation2DServer.agent_set_map(navigation_obstacle.get_rid(), get_world_2d().get_navigation_map()) 
+	Navigation2DServer.agent_set_map(navigation_obstacle.get_rid(), get_world_2d().get_navigation_map()) 
 
 func make_sound():
 	voice_sounds.play()
@@ -79,7 +79,8 @@ func _physics_process(delta):
 		AnimationState.SWIM:
 			move_state(delta, AnimationState.SWIM, AnimationState.SWIM, MAX_SPEED, ACCELERATION)
 	
-	move_and_slide(safe_velocity)
+	if not navigation_agent.is_navigation_finished():
+		move_and_slide(safe_velocity)
 	
 func look_at_direction(direction:Vector2) -> void:
 	direction = direction.normalized()
