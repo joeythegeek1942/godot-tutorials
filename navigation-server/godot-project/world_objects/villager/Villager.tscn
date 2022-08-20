@@ -227,3 +227,8 @@ stream = ExtResource( 10 )
 volume_db = -10.0
 max_distance = 1000.0
 attenuation = 3.86375
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_velocity_computed"]

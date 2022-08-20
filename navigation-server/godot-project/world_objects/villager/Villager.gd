@@ -108,3 +108,6 @@ func _get_direction_string(angle:float) -> String:
 	if angle_deg > -90.0 and angle_deg < 90.0:
 		return "Right"
 	return "Left"
+
+func _on_NavigationAgent2D_velocity_computed(safe_velocity):
+	velocity = move_and_slide(safe_velocity)

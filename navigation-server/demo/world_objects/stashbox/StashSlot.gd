@@ -12,16 +12,12 @@ func _ready():
 func place_box() -> bool:
 	if not stash_box.visible:
 		stash_box.visible = true
-		stash_box.collision_layer = 1
-		stash_box.collision_mask = 1
 		return true
 	return false
 	
 func take_box() -> bool:
 	if stash_box.visible:
 		stash_box.visible = false
-		stash_box.collision_layer = 0
-		stash_box.collision_mask = 0
 		return true
 	return false
 

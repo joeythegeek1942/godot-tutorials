@@ -1,6 +1,6 @@
 tool
 class_name Ship
-extends KinematicBody2D
+extends Node2D
 
 signal arrive
 signal depart

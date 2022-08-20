@@ -23,18 +23,24 @@ export(float) var MAX_SPEED = 75
 onready var animation_player = $AnimationPlayer
 onready var voice_sounds = $VoiceSounds
 onready var navigation_agent:NavigationAgent2D = $NavigationAgent2D
+onready var navigation_obstacle:NavigationObstacle2D = $NavigationObstacle2D
 
 var velocity = Vector2.ZERO
+var safe_velocity = Vector2.ZERO
 var state = AnimationState.IDLE
 var last_move_velocity = Vector2.ZERO
 var current_animation = null
 var move_direction = Vector2.ZERO
 
+func _ready():
+	# ensure villagers are initially set to their origin
+	set_target_location(position)
+	
+	# inform NavigationObstacle2D about the navigation map (Godot 3.5)
+	#Navigation2DServer.agent_set_map(navigation_obstacle.get_rid(), get_world_2d().get_navigation_map()) 
+
 func make_sound():
 	voice_sounds.play()
-
-func _ready():
-	randomize()
 	
 func reset():
 	state = AnimationState.IDLE
@@ -48,23 +54,20 @@ func idle():
 	
 func set_target_location(target:Vector2) -> void:
 	navigation_agent.set_target_location(target)
-	
-func do_state(delta, animation):
-	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	_play_animation(animation)
-	navigation_agent.set_velocity(velocity)
+	make_sound()
 	
 func move_state(delta, idle_animation, run_animation, max_speed, acceleration):
 
 	if not navigation_agent.is_navigation_finished():
-		var move_direction = global_position.direction_to(navigation_agent.get_next_location())
+		var move_direction = position.direction_to(navigation_agent.get_next_location())
 		velocity = move_direction * MAX_SPEED
-		navigation_agent.set_velocity(velocity)
 		look_at_direction(move_direction)
 		_play_animation(run_animation)
 	else:
 		_play_animation(idle_animation)
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
+	navigation_agent.set_velocity(velocity)
 	
 func _physics_process(delta):
 	if not visible:
@@ -75,9 +78,9 @@ func _physics_process(delta):
 			move_state(delta, AnimationState.IDLE, AnimationState.IDLE, MAX_SPEED, ACCELERATION)
 		AnimationState.SWIM:
 			move_state(delta, AnimationState.SWIM, AnimationState.SWIM, MAX_SPEED, ACCELERATION)
-		_:
-			do_state(delta, state)
-		
+	
+	move_and_slide(safe_velocity)
+	
 func look_at_direction(direction:Vector2) -> void:
 	direction = direction.normalized()
 	move_direction = direction
@@ -112,8 +115,7 @@ func _get_direction_string(angle:float) -> String:
 	return "Left"
 
 func _on_NavigationAgent2D_velocity_computed(safe_velocity):
-	if not navigation_agent.is_target_reached():
-		move_and_slide(safe_velocity)
+	self.safe_velocity = safe_velocity
 
 func _on_NavigationAgent2D_path_changed():
 	emit_signal("path_changed", navigation_agent.get_nav_path())
@@ -121,3 +123,4 @@ func _on_NavigationAgent2D_path_changed():
 
 func _on_NavigationAgent2D_navigation_finished():
 	emit_signal("path_changed", [])
+	emit_signal("target_reached")

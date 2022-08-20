@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://MovementController.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Node2D",
 "class": "Ship",
 "language": "GDScript",
 "path": "res://world_objects/ship/Ship.gd"
@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://world_objects/stashbox/StashArea.gd"
 }, {
-"base": "RigidBody2D",
+"base": "Node2D",
 "class": "StashBox",
 "language": "GDScript",
 "path": "res://world_objects/stashbox/StashBox.gd"

@@ -16,6 +16,9 @@ region = Rect2( 240, 112, 32, 80 )
 atlas = ExtResource( 1 )
 region = Rect2( 272, 112, 32, 80 )
 
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 17.25, 32.75 )
+
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 128, 864, 64 )
@@ -253,16 +256,14 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 2 ), Vector2( 0, 2 ), Vector2( 0, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 18, 32.5 )
-
-[node name="Ship" type="KinematicBody2D"]
+[node name="Ship" type="Node2D"]
 position = Vector2( 0, -522 )
-collision_layer = 0
-collision_mask = 0
 script = ExtResource( 3 )
 
-[node name="ShipPosition" type="Node2D" parent="."]
+[node name="ShipPosition" type="KinematicBody2D" parent="."]
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="ShipPosition"]
+estimate_radius = false
 
 [node name="Sprite" type="Sprite" parent="ShipPosition"]
 position = Vector2( 0, -1 )
@@ -277,6 +278,11 @@ show_ground = false
 [node name="Mast" type="Sprite" parent="ShipPosition"]
 position = Vector2( 0, -2 )
 texture = SubResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipPosition"]
+position = Vector2( 1, 4 )
+shape = SubResource( 22 )
+disabled = true
 
 [node name="Captain" type="Sprite" parent="ShipPosition"]
 position = Vector2( -9, 21 )
@@ -311,10 +317,6 @@ attenuation = 1.80251
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, 5.5 )
-shape = SubResource( 22 )
 
 [connection signal="on_place" from="ShipPosition/StashArea" to="." method="_on_StashArea_on_place"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
