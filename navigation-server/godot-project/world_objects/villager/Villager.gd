@@ -1,10 +1,7 @@
 class_name Villager
 extends KinematicBody2D
 
-signal action_performed
-signal animation_finished
 signal target_reached
-signal path_changed(path)
 
 enum AnimationState {
 	IDLE = 0,
@@ -71,9 +68,6 @@ func look_at_direction(direction:Vector2) -> void:
 	move_direction = direction
 	if current_animation != null:
 		_play_animation(current_animation)
-	
-func _action_performed() -> void:
-	emit_signal("action_performed")
 
 func _play_walk_sound():
 	if not visible:
@@ -81,9 +75,6 @@ func _play_walk_sound():
 		
 func _arrived_at_location() -> bool:
 	return position.distance_to(target_location) < 8
-	
-func _animation_finished():
-	emit_signal("animation_finished")
 	
 func _play_animation(animation_type:int) -> void:
 	var animation_type_string = AnimationNames[animation_type]
