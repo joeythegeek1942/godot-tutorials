@@ -1,10 +1,10 @@
 extends Node2D
 
-onready var villager = $"%Villager"
 onready var ship = $"%Ship"
 
 func _ready():
-	villager.swim()
+	for villager in get_tree().get_nodes_in_group("Villagers"):
+		villager.swim()
 
 func _on_Ship_arrive():
 	ship.get_stash_area().place(0)
