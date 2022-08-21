@@ -23,7 +23,6 @@ export(float) var MAX_SPEED = 75
 onready var animation_player = $AnimationPlayer
 onready var voice_sounds = $VoiceSounds
 onready var navigation_agent:NavigationAgent2D = $NavigationAgent2D
-onready var navigation_obstacle:NavigationObstacle2D = $NavigationObstacle2D
 
 var velocity = Vector2.ZERO
 var safe_velocity = Vector2.ZERO
@@ -35,9 +34,6 @@ var move_direction = Vector2.ZERO
 func _ready():
 	# ensure villagers are initially set to their origin
 	set_target_location(position)
-	
-	# inform NavigationObstacle2D about the navigation map (Godot 3.5)
-	Navigation2DServer.agent_set_map(navigation_obstacle.get_rid(), get_world_2d().get_navigation_map()) 
 
 func make_sound():
 	voice_sounds.play()
@@ -57,9 +53,11 @@ func set_target_location(target:Vector2) -> void:
 	make_sound()
 	
 func move_state(delta, idle_animation, run_animation, max_speed, acceleration):
+	
+	var next_location = navigation_agent.get_next_location()
 
 	if not navigation_agent.is_navigation_finished():
-		var move_direction = position.direction_to(navigation_agent.get_next_location())
+		var move_direction = position.direction_to(next_location)
 		velocity = move_direction * MAX_SPEED
 		look_at_direction(move_direction)
 		_play_animation(run_animation)
@@ -80,7 +78,7 @@ func _physics_process(delta):
 			move_state(delta, AnimationState.SWIM, AnimationState.SWIM, MAX_SPEED, ACCELERATION)
 	
 	if not navigation_agent.is_navigation_finished():
-		move_and_slide(safe_velocity)
+		velocity = move_and_slide(safe_velocity)
 	
 func look_at_direction(direction:Vector2) -> void:
 	direction = direction.normalized()

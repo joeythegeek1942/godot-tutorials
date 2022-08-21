@@ -105,7 +105,6 @@ position = Vector2( 58, -227 )
 [node name="RandomMovementController" parent="GameObjects/OtherVillagers/Villager6" instance=ExtResource( 8 )]
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
-visible = false
 navpoly = SubResource( 1 )
 
 [node name="Oceanscape" type="AudioStreamPlayer" parent="."]

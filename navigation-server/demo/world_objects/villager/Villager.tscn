@@ -231,13 +231,11 @@ attenuation = 3.86375
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 16.0
-target_desired_distance = 16.0
-path_max_distance = 16.0
+target_desired_distance = 8.0
+path_max_distance = 32.0
 avoidance_enabled = true
-max_speed = 70.0
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 16.0
+radius = 8.0
+time_horizon = 10.0
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_navigation_finished"]
 [connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_path_changed"]
