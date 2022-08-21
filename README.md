@@ -10,4 +10,4 @@ A curation of Godot tutorial source code created by bitbrain.
 - [2D Lighting and Day/Night cycle](/2d-lighting) ([📺 watch on Youtube](https://www.youtube.com/watch?v=j_FMsL_ru1w))
 - [RPG Character Animations](/rpg-animations) ([📺 watch on Youtube](https://www.youtube.com/watch?v=a3N9Acx3ovg))
 - [AI Behaviour Trees](/behaviour-tree) ([📺 watch on Youtube](https://www.youtube.com/watch?v=n0gVEA1dyPQ))
-
+- [2D Navigation](/navigation-server) ([📺 watch on Youtube](https://www.youtube.com/watch?v=_MTJ9Qz0gJk))
