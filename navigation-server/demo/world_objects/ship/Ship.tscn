@@ -297,7 +297,6 @@ position = Vector2( 0.5, 3.5 )
 shape = SubResource( 22 )
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="ShipPosition"]
-radius = 32.0
 
 [node name="ShipAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 6 )
