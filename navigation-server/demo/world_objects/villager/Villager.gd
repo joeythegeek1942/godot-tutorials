@@ -16,9 +16,7 @@ var AnimationNames = {
 	AnimationState.IDLE:"Idle",
 }
 
-export(float) var ACCELERATION = 540
-export(float) var FRICTION = 770
-export(float) var MAX_SPEED = 75
+export(float) var MAX_SPEED = 105
 
 onready var animation_player = $AnimationPlayer
 onready var voice_sounds = $VoiceSounds
@@ -52,7 +50,7 @@ func set_target_location(target:Vector2) -> void:
 	navigation_agent.set_target_location(target)
 	make_sound()
 	
-func move_state(delta, idle_animation, run_animation, max_speed, acceleration):
+func move_state(delta, idle_animation, run_animation):
 	
 	var next_location = navigation_agent.get_next_location()
 
@@ -63,7 +61,7 @@ func move_state(delta, idle_animation, run_animation, max_speed, acceleration):
 		_play_animation(run_animation)
 	else:
 		_play_animation(idle_animation)
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, delta)
 	
 	navigation_agent.set_velocity(velocity)
 	
@@ -73,9 +71,9 @@ func _physics_process(delta):
 	
 	match state:
 		AnimationState.IDLE:
-			move_state(delta, AnimationState.IDLE, AnimationState.IDLE, MAX_SPEED, ACCELERATION)
+			move_state(delta, AnimationState.IDLE, AnimationState.IDLE)
 		AnimationState.SWIM:
-			move_state(delta, AnimationState.SWIM, AnimationState.SWIM, MAX_SPEED, ACCELERATION)
+			move_state(delta, AnimationState.SWIM, AnimationState.SWIM)
 	
 	if not navigation_agent.is_navigation_finished():
 		velocity = move_and_slide(safe_velocity)

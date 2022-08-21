@@ -10,6 +10,7 @@ onready var captain = $ShipPosition/Captain
 onready var ship_sound = $ShipSound
 onready var timer = $Timer
 onready var stash_area = $ShipPosition/StashArea
+onready var navigation_obstacle = $ShipPosition/NavigationObstacle2D
 
 var departed = false
 
@@ -21,6 +22,8 @@ func _ready():
 	call_deferred("_arrived")
 	captain.position.x = -7
 	captain.position.y = 7
+	
+	Navigation2DServer.agent_set_map(navigation_obstacle.get_rid(), get_world_2d().navigation_map)
 	
 func ring_bell():
 	ship_sound.play()
